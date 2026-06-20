@@ -1,0 +1,68 @@
+<div class="min-h-screen bg-gray-950">
+  <header class="bg-gray-900 border-b border-gray-800 px-6 py-4 flex items-center gap-4">
+    <a routerLink="/dashboard" class="text-gray-400 hover:text-white transition">← Dashboard</a>
+    <h1 class="text-white font-bold text-xl">👥 Gerenciar Usuários</h1>
+    <span class="ml-2 px-2 py-0.5 rounded-full bg-amber-900/50 text-amber-300 text-xs">Admin</span>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-6 py-8">
+    @if (loading()) {
+      <div class="flex justify-center py-20">
+        <svg class="animate-spin h-8 w-8 text-amber-400" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
+        </svg>
+      </div>
+    }
+
+    @if (!loading()) {
+      <div class="overflow-hidden rounded-xl border border-gray-800">
+        <table class="w-full text-sm">
+          <thead class="bg-gray-800/60 text-gray-400 uppercase text-xs tracking-wider">
+            <tr>
+              <th class="px-4 py-3 text-left">Nome</th>
+              <th class="px-4 py-3 text-left hidden md:table-cell">E-mail</th>
+              <th class="px-4 py-3 text-center">Perfil</th>
+              <th class="px-4 py-3 text-center">Status</th>
+              <th class="px-4 py-3 text-center">Ação</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-800">
+            @for (user of users(); track user.id) {
+              <tr class="bg-gray-900 hover:bg-gray-800/60 transition">
+                <td class="px-4 py-3 text-white font-medium">{{ user.nome }}</td>
+                <td class="px-4 py-3 text-gray-400 hidden md:table-cell">{{ user.email }}</td>
+                <td class="px-4 py-3 text-center">
+                  @if (user.role === 'admin') {
+                    <span class="px-2 py-0.5 rounded-full bg-amber-900/50 text-amber-300 text-xs">Admin</span>
+                  } @else {
+                    <span class="px-2 py-0.5 rounded-full bg-gray-700 text-gray-400 text-xs">Usuário</span>
+                  }
+                </td>
+                <td class="px-4 py-3 text-center">
+                  @if (user.ativo) {
+                    <span class="px-2 py-0.5 rounded-full bg-emerald-900/50 text-emerald-300 text-xs">Ativo</span>
+                  } @else {
+                    <span class="px-2 py-0.5 rounded-full bg-red-900/50 text-red-300 text-xs">Inativo</span>
+                  }
+                </td>
+                <td class="px-4 py-3 text-center">
+                  @if (user.role !== 'admin') {
+                    <button
+                      (click)="toggle(user)"
+                      class="px-3 py-1 text-xs rounded transition
+                             {{ user.ativo ? 'bg-red-900/50 hover:bg-red-800 text-red-300' : 'bg-emerald-900/50 hover:bg-emerald-800 text-emerald-300' }}">
+                      {{ user.ativo ? 'Desativar' : 'Ativar' }}
+                    </button>
+                  } @else {
+                    <span class="text-gray-600 text-xs">—</span>
+                  }
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+  </main>
+</div>

@@ -1,0 +1,91 @@
+<div class="min-h-screen bg-gray-950">
+  <header class="bg-gray-900 border-b border-gray-800 px-6 py-4 flex items-center gap-4">
+    <a routerLink="/dashboard" class="text-gray-400 hover:text-white transition">← Dashboard</a>
+    <h1 class="text-white font-bold text-xl">🩺 Sessões de Fisioterapia</h1>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 py-8">
+    <div class="flex justify-between items-center mb-6">
+      <p class="text-gray-400 text-sm">{{ sessoes().length }} registro(s)</p>
+      <a routerLink="/sessoes/novo"
+         class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-medium rounded-lg text-sm transition">
+        + Nova Sessão
+      </a>
+    </div>
+
+    @switch (true) {
+      @case (loading()) {
+        <div class="flex justify-center py-20">
+          <svg class="animate-spin h-8 w-8 text-emerald-400" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
+          </svg>
+        </div>
+      }
+      @case (!!error()) {
+        <div class="text-center py-16 text-red-400">⚠️ {{ error() }}</div>
+      }
+      @case (sessoes().length === 0) {
+        <div class="text-center py-20 text-gray-500">
+          <p class="text-5xl mb-4">🩺</p>
+          <p class="text-lg font-medium">Nenhuma sessão registrada.</p>
+          <p class="text-sm mt-1">Clique em "Nova Sessão" para iniciar.</p>
+        </div>
+      }
+      @default {
+        <div class="overflow-hidden rounded-xl border border-gray-800">
+          <table class="w-full text-sm">
+            <thead class="bg-gray-800/60 text-gray-400 uppercase text-xs tracking-wider">
+              <tr>
+                <th class="px-4 py-3 text-left">Cavalo</th>
+                <th class="px-4 py-3 text-left hidden md:table-cell">Data</th>
+                <th class="px-4 py-3 text-left hidden md:table-cell">Foco</th>
+                <th class="px-4 py-3 text-center hidden lg:table-cell">Duração</th>
+                <th class="px-4 py-3 text-center">Progresso</th>
+                <th class="px-4 py-3 text-right">Ações</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-800">
+              @for (s of sessoes(); track s.id) {
+                <tr class="bg-gray-900 hover:bg-gray-800/70 transition">
+                  <td class="px-4 py-3 text-white font-medium">{{ s.cavalo?.nome ?? 'ID ' + s.cavaloId }}</td>
+                  <td class="px-4 py-3 text-gray-400 hidden md:table-cell">{{ s.dataSessao }}</td>
+                  <td class="px-4 py-3 text-gray-400 hidden md:table-cell">{{ s.focoLesao }}</td>
+                  <td class="px-4 py-3 text-center text-gray-400 hidden lg:table-cell">{{ s.duracaoMin }} min</td>
+                  <td class="px-4 py-3 text-center">
+                    @if (s.progressoBoa) {
+                      <span class="px-2 py-0.5 rounded-full bg-emerald-900/50 text-emerald-300 text-xs">✓ Boa</span>
+                    } @else {
+                      <span class="px-2 py-0.5 rounded-full bg-gray-700 text-gray-400 text-xs">–</span>
+                    }
+                  </td>
+                  <td class="px-4 py-3 text-right">
+                    <div class="flex justify-end gap-2">
+                      <a [routerLink]="['/sessoes/editar', s.id]"
+                         class="px-3 py-1 text-xs bg-gray-700 hover:bg-gray-600 text-gray-200 rounded transition">Editar</a>
+                      <button (click)="confirmDelete(s)"
+                              class="px-3 py-1 text-xs bg-red-900/50 hover:bg-red-800 text-red-300 rounded transition">Excluir</button>
+                    </div>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+    }
+  </main>
+</div>
+
+@if (showModal()) {
+  <div class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+    <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 max-w-sm w-full shadow-2xl">
+      <h3 class="text-white font-bold text-lg mb-2">Confirmar exclusão</h3>
+      <p class="text-gray-400 text-sm mb-6">Deseja excluir a sessão do dia <strong class="text-white">{{ selectedSessao()?.dataSessao }}</strong>?</p>
+      <div class="flex gap-3 justify-end">
+        <button (click)="showModal.set(false)" class="px-4 py-2 text-sm text-gray-300 border border-gray-700 rounded-lg transition">Cancelar</button>
+        <button (click)="deleteSelected()" class="px-4 py-2 text-sm bg-red-600 hover:bg-red-500 text-white rounded-lg transition">Excluir</button>
+      </div>
+    </div>
+  </div>
+}
