@@ -7,13 +7,17 @@ import {
   Param,
   Delete,
   ParseIntPipe,
+  UseGuards,
 } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { SessaoFisioService } from '../../application/services/sessao-fisio.service';
 import { CreateSessaoFisioDto } from '../dtos/create-sessao-fisio.dto';
 import { UpdateSessaoFisioDto } from '../dtos/update-sessao-fisio.dto';
+import { JwtAuthGuard } from '../../../auth/guards/jwt-auth.guard';
 
 @ApiTags('sessoes')
+@ApiBearerAuth('JWT')
+@UseGuards(JwtAuthGuard)
 @Controller('sessoes')
 export class SessaoFisioController {
   constructor(private readonly sessaoService: SessaoFisioService) {}

@@ -7,13 +7,17 @@ import {
   Param,
   Delete,
   ParseIntPipe,
+  UseGuards,
 } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CavaloService } from '../../application/services/cavalo.service';
 import { CreateCavaloDto } from '../dtos/create-cavalo.dto';
 import { UpdateCavaloDto } from '../dtos/update-cavalo.dto';
+import { JwtAuthGuard } from '../../../auth/guards/jwt-auth.guard';
 
 @ApiTags('cavalos')
+@ApiBearerAuth('JWT')
+@UseGuards(JwtAuthGuard)
 @Controller('cavalos')
 export class CavaloController {
   constructor(private readonly cavaloService: CavaloService) {}
@@ -35,7 +39,6 @@ export class CavaloController {
     summary: 'Buscar um cavalo por ID com as sessões relacionadas',
   })
   findOne(@Param('id', ParseIntPipe) id: number) {
-    // Relacionamento com sessoes para evitar N+1 query
     return this.cavaloService.findById(id, ['sessoes']);
   }
 
