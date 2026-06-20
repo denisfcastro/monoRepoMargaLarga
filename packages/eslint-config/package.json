@@ -1,0 +1,11 @@
+{
+  "name": "@manga-larga/eslint-config",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0",
+    "@eslint/js": "^9.0.0"
+  }
+}
