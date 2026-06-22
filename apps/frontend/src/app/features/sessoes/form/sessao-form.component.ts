@@ -43,7 +43,7 @@ export class SessaoFormComponent implements OnInit {
         next: (s) => {
           this.form.patchValue({
             cavaloId: s.cavaloId,
-            dataSessao: s.dataSessao,
+            dataSessao: s.dataSessao ? s.dataSessao.split('T')[0] : '',
             duracaoMin: s.duracaoMin,
             focoLesao: s.focoLesao,
             progressoBoa: s.progressoBoa,

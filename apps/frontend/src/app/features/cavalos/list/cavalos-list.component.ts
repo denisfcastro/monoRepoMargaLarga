@@ -1,12 +1,13 @@
 import { Component, inject, signal, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { DatePipe } from '@angular/common';
 import { CavalosService, Cavalo } from '../cavalos.service';
 import { ToastService } from '../../../shared/components/toast/toast.service';
 
 @Component({
   selector: 'app-cavalos-list',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, DatePipe],
   templateUrl: './cavalos-list.component.html',
 })
 export class CavalosListComponent implements OnInit {

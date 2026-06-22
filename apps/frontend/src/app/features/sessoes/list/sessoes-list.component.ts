@@ -1,12 +1,13 @@
 import { Component, inject, signal, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { DatePipe } from '@angular/common';
 import { SessoesService, SessaoFisio } from '../sessoes.service';
 import { ToastService } from '../../../shared/components/toast/toast.service';
 
 @Component({
   selector: 'app-sessoes-list',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, DatePipe],
   templateUrl: './sessoes-list.component.html',
 })
 export class SessoesListComponent implements OnInit {
