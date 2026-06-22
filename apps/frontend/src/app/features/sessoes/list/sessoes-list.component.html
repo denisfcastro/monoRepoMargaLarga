@@ -49,7 +49,7 @@
               @for (s of sessoes(); track s.id) {
                 <tr class="bg-gray-900 hover:bg-gray-800/70 transition">
                   <td class="px-4 py-3 text-white font-medium">{{ s.cavalo?.nome ?? 'ID ' + s.cavaloId }}</td>
-                  <td class="px-4 py-3 text-gray-400 hidden md:table-cell">{{ s.dataSessao }}</td>
+                  <td class="px-4 py-3 text-gray-400 hidden md:table-cell">{{ s.dataSessao | date: 'dd/MM/yyyy' : 'UTC' }}</td>
                   <td class="px-4 py-3 text-gray-400 hidden md:table-cell">{{ s.focoLesao }}</td>
                   <td class="px-4 py-3 text-center text-gray-400 hidden lg:table-cell">{{ s.duracaoMin }} min</td>
                   <td class="px-4 py-3 text-center">

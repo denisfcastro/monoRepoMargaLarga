@@ -39,7 +39,7 @@ export class CavaloFormComponent implements OnInit {
           this.form.patchValue({
             nome: c.nome,
             nomeHaras: c.nomeHaras,
-            dataAquisicao: c.dataAquisicao,
+            dataAquisicao: c.dataAquisicao ? c.dataAquisicao.split('T')[0] : '',
             valorCompra: c.valorCompra,
             emTratamento: c.emTratamento,
           });
