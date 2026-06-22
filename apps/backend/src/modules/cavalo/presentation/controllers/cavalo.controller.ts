@@ -20,7 +20,7 @@ import { JwtAuthGuard } from '../../../auth/guards/jwt-auth.guard';
 @UseGuards(JwtAuthGuard)
 @Controller('cavalos')
 export class CavaloController {
-  constructor(private readonly cavaloService: CavaloService) {}
+  constructor(private readonly cavaloService: CavaloService) { }
 
   @Post()
   @ApiOperation({ summary: 'Criar um novo cavalo' })
