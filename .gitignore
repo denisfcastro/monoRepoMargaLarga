@@ -41,6 +41,15 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/tasks.json
 
+# SQLite databases
+*.db
+apps/backend/data/
+
+# Debug / log artifacts
+ts-errors.txt
+typescript-errors.txt
+git_log.txt
+
 # Operating System files
 .DS_Store
 Thumbs.db
