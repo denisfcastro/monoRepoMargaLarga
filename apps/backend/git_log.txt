@@ -1,2 +1,0 @@
- denisfcastro : feat: c classes e rngs
- denisfcastro : feat: commit inicial projeto

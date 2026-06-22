@@ -1,5 +1,0 @@
-﻿src/modules/cavalo/application/ports/cavalo.repository.port.ts(1,33): error TS2307: Cannot find module '../infrastructure/persistence/typeorm/entities/cavalo.orm-entity' or its corresponding type declarations.
-src/modules/cavalo/application/ports/cavalo.repository.port.ts(2,33): error TS2307: Cannot find module '../presentation/dtos/create-cavalo.dto' or its corresponding type declarations.
-src/modules/cavalo/application/ports/cavalo.repository.port.ts(3,33): error TS2307: Cannot find module '../presentation/dtos/update-cavalo.dto' or its corresponding type declarations.
-src/modules/cavalo/infrastructure/persistence/typeorm/entities/cavalo.orm-entity.ts(2,38): error TS2307: Cannot find module '../../../../sessao-fisio/infrastructure/persistence/typeorm/entities/sessao-fisio.orm-entity' or its corresponding type declarations.
-src/modules/cavalo/infrastructure/persistence/typeorm/entities/cavalo.orm-entity.ts(21,54): error TS18046: 'sessao' is of type 'unknown'.
