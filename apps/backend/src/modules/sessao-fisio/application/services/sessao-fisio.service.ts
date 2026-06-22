@@ -19,7 +19,7 @@ export class SessaoFisioService {
     @Inject(SESSAO_FISIO_REPOSITORY_PORT)
     private readonly sessaoRepository: SessaoFisioRepositoryPort,
     private readonly cavaloService: CavaloService,
-  ) {}
+  ) { }
 
   private async validateSessaoRules(
     data: Partial<CreateSessaoFisioDto>,
@@ -32,7 +32,7 @@ export class SessaoFisioService {
       const hoje = new Date();
       if (sessaoDate > hoje) {
         throw new BadRequestException(
-          'A dataSessao não pode ser posterior à data atual.',
+          'A data da Sessão não pode ser posterior à data atual.',
         );
       }
     }
@@ -68,7 +68,7 @@ export class SessaoFisioService {
         });
       if (!cavalo.emTratamento) {
         throw new ForbiddenException(
-          'Não é possível adicionar ou alterar a sessão. O cavalo inativo (já recebeu alta).',
+          'Não é possível adicionar ou alterar a sessão. O cavalo já recebeu alta (não está em tratamento).',
         );
       }
     }
