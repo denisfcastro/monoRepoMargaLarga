@@ -1,16 +1,16 @@
-<div class="min-h-screen bg-gray-950">
+<div class="min-h-screen bg-slate-50">
   <!-- Header -->
-  <header class="bg-gray-900 border-b border-gray-800 px-6 py-4 flex items-center gap-4">
-    <a routerLink="/dashboard" class="text-gray-400 hover:text-white transition">← Dashboard</a>
-    <h1 class="text-white font-bold text-xl">🐎 Cavalos</h1>
+  <header class="bg-white border-b border-slate-200 px-6 py-4 flex items-center gap-4">
+    <a routerLink="/dashboard" class="text-slate-500 hover:text-slate-800 transition">← Dashboard</a>
+    <h1 class="text-slate-800 font-bold text-xl">🐎 Cavalos</h1>
   </header>
 
   <main class="max-w-5xl mx-auto px-6 py-8">
     <!-- Ações -->
     <div class="flex justify-between items-center mb-6">
-      <p class="text-gray-400 text-sm">{{ cavalos().length }} registro(s) encontrado(s)</p>
+      <p class="text-slate-500 text-sm">{{ cavalos().length }} registro(s) encontrado(s)</p>
       <a routerLink="/cavalos/novo"
-        class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-medium rounded-lg text-sm transition">
+        class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-slate-800 font-medium rounded-lg text-sm transition">
         + Novo Cavalo
       </a>
     </div>
@@ -18,7 +18,7 @@
     <!-- Loading -->
     @if (loading()) {
     <div class="flex justify-center py-20">
-      <svg class="animate-spin h-8 w-8 text-indigo-400" fill="none" viewBox="0 0 24 24">
+      <svg class="animate-spin h-8 w-8 text-emerald-600" fill="none" viewBox="0 0 24 24">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
       </svg>
@@ -27,12 +27,12 @@
 
     <!-- Erro -->
     @if (error()) {
-    <div class="text-center py-16 text-red-400">⚠️ {{ error() }}</div>
+    <div class="text-center py-16 text-red-600">⚠️ {{ error() }}</div>
     }
 
     <!-- Vazio -->
     @if (!loading() && !error() && cavalos().length === 0) {
-    <div class="text-center py-20 text-gray-500">
+    <div class="text-center py-20 text-slate-400">
       <p class="text-5xl mb-4">🐴</p>
       <p class="text-lg font-medium">Nenhum cavalo cadastrado ainda.</p>
       <p class="text-sm mt-1">Clique em "Novo Cavalo" para começar.</p>
@@ -41,9 +41,9 @@
 
     <!-- Lista -->
     @if (!loading() && cavalos().length > 0) {
-    <div class="overflow-hidden rounded-xl border border-gray-800">
+    <div class="overflow-hidden rounded-xl border border-slate-200">
       <table class="w-full text-sm">
-        <thead class="bg-gray-800/60 text-gray-400 uppercase text-xs tracking-wider">
+        <thead class="bg-emerald-600 text-white uppercase text-xs tracking-wider">
           <tr>
             <th class="px-4 py-3 text-left">Nome</th>
             <th class="px-4 py-3 text-left hidden md:table-cell">Haras</th>
@@ -52,26 +52,26 @@
             <th class="px-4 py-3 text-right">Ações</th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-gray-800">
+        <tbody class="divide-y divide-slate-200">
           @for (cavalo of cavalos(); track cavalo.id) {
-          <tr class="bg-gray-900 hover:bg-gray-800/70 transition">
-            <td class="px-4 py-3 text-white font-medium">{{ cavalo.nome }}</td>
-            <td class="px-4 py-3 text-gray-400 hidden md:table-cell">{{ cavalo.nomeHaras }}</td>
-            <td class="px-4 py-3 text-gray-400 hidden lg:table-cell">{{ cavalo.dataAquisicao | date: 'dd/MM/yyyy' :
+          <tr class="bg-white hover:bg-slate-100/70 transition">
+            <td class="px-4 py-3 text-slate-800 font-medium">{{ cavalo.nome }}</td>
+            <td class="px-4 py-3 text-slate-500 hidden md:table-cell">{{ cavalo.nomeHaras }}</td>
+            <td class="px-4 py-3 text-slate-500 hidden lg:table-cell">{{ cavalo.dataAquisicao | date: 'dd/MM/yyyy' :
               'UTC' }}</td>
             <td class="px-4 py-3 text-center">
               @if (cavalo.emTratamento) {
-              <span class="px-2 py-0.5 rounded-full bg-emerald-900/50 text-emerald-300 text-xs">Em tratamento</span>
+              <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-xs">Em tratamento</span>
               } @else {
-              <span class="px-2 py-0.5 rounded-full bg-gray-700 text-gray-400 text-xs">Alta</span>
+              <span class="px-2 py-0.5 rounded-full bg-slate-200 text-slate-500 text-xs">Alta</span>
               }
             </td>
             <td class="px-4 py-3 text-right">
               <div class="flex justify-end gap-2">
                 <a [routerLink]="['/cavalos/editar', cavalo.id]"
-                  class="px-3 py-1 text-xs bg-gray-700 hover:bg-gray-600 text-gray-200 rounded transition">Editar</a>
+                  class="px-3 py-1 text-xs bg-slate-200 hover:bg-slate-300 text-slate-800 rounded transition">Editar</a>
                 <button (click)="confirmDelete(cavalo)"
-                  class="px-3 py-1 text-xs bg-red-900/50 hover:bg-red-800 text-red-300 rounded transition">
+                  class="px-3 py-1 text-xs bg-red-100 hover:bg-red-200 text-red-700 rounded transition">
                   Excluir
                 </button>
               </div>
@@ -88,17 +88,17 @@
 <!-- Modal de Confirmação -->
 @if (showModal()) {
 <div class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
-  <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 max-w-sm w-full shadow-2xl">
-    <h3 class="text-white font-bold text-lg mb-2">Confirmar exclusão</h3>
-    <p class="text-gray-400 text-sm mb-6">
-      Deseja realmente excluir o cavalo <strong class="text-white">{{ selectedCavalo()?.nome }}</strong>?
+  <div class="bg-white border border-slate-300 rounded-2xl p-6 max-w-sm w-full shadow-2xl">
+    <h3 class="text-slate-800 font-bold text-lg mb-2">Confirmar exclusão</h3>
+    <p class="text-slate-500 text-sm mb-6">
+      Deseja realmente excluir o cavalo <strong class="text-slate-800">{{ selectedCavalo()?.nome }}</strong>?
       Esta ação não pode ser desfeita.
     </p>
     <div class="flex gap-3 justify-end">
       <button (click)="showModal.set(false)"
-        class="px-4 py-2 text-sm text-gray-300 border border-gray-700 hover:border-gray-500 rounded-lg transition">Cancelar</button>
+        class="px-4 py-2 text-sm text-slate-600 border border-slate-300 hover:border-slate-400 rounded-lg transition">Cancelar</button>
       <button (click)="deleteSelected()"
-        class="px-4 py-2 text-sm bg-red-600 hover:bg-red-500 text-white rounded-lg transition">Excluir</button>
+        class="px-4 py-2 text-sm bg-red-600 hover:bg-red-500 text-slate-800 rounded-lg transition">Excluir</button>
     </div>
   </div>
 </div>

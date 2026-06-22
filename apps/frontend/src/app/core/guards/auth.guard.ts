@@ -7,7 +7,7 @@ export const authGuard: CanActivateFn = () => {
   const router = inject(Router);
 
   if (auth.isLoggedIn()) return true;
-  return router.createUrlTree(['/login'], { queryParams: { unauthorized: true } });
+  return router.createUrlTree(['/login']);
 };
 
 export const adminGuard: CanActivateFn = () => {

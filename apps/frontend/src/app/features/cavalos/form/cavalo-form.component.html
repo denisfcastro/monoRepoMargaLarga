@@ -1,63 +1,63 @@
-<div class="min-h-screen bg-gray-950">
-  <header class="bg-gray-900 border-b border-gray-800 px-6 py-4 flex items-center gap-4">
-    <a routerLink="/cavalos" class="text-gray-400 hover:text-white transition">← Cavalos</a>
-    <h1 class="text-white font-bold text-xl">{{ isEditMode() ? 'Editar' : 'Novo' }} Cavalo</h1>
+<div class="min-h-screen bg-slate-50">
+  <header class="bg-white border-b border-slate-200 px-6 py-4 flex items-center gap-4">
+    <a routerLink="/cavalos" class="text-slate-500 hover:text-slate-800 transition">← Cavalos</a>
+    <h1 class="text-slate-800 font-bold text-xl">{{ isEditMode() ? 'Editar' : 'Novo' }} Cavalo</h1>
   </header>
 
   <main class="max-w-2xl mx-auto px-6 py-8">
     @if (apiError()) {
-      <div class="mb-6 p-4 rounded-lg bg-red-900/40 border border-red-700 text-red-300 text-sm">⚠️ {{ apiError() }}</div>
+      <div class="mb-6 p-4 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm">⚠️ {{ apiError() }}</div>
     }
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="bg-gray-900 border border-gray-800 rounded-2xl p-6 space-y-5">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="bg-white border border-slate-200 rounded-2xl p-6 space-y-5">
       <!-- Nome -->
       <div>
-        <label class="block text-sm font-medium text-gray-300 mb-1" for="nome">Nome do cavalo *</label>
+        <label class="block text-sm font-medium text-slate-600 mb-1" for="nome">Nome do cavalo *</label>
         <input id="nome" type="text" formControlName="nome" placeholder="Ex: Trovão"
-               class="w-full px-4 py-2.5 rounded-lg bg-gray-800 border text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition
-                      {{ isInvalid('nome') ? 'border-red-500' : 'border-gray-700' }}"/>
-        @if (isInvalid('nome')) { <p class="mt-1 text-xs text-red-400">{{ form.get('nome')?.errors?.['serverError'] || 'Nome é obrigatório.' }}</p> }
+               class="w-full px-4 py-2.5 rounded-lg bg-slate-100 border text-slate-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition
+                      {{ isInvalid('nome') ? 'border-red-500' : 'border-slate-300' }}"/>
+        @if (isInvalid('nome')) { <p class="mt-1 text-xs text-red-600">{{ form.get('nome')?.errors?.['serverError'] || 'Nome é obrigatório.' }}</p> }
       </div>
 
       <!-- Haras -->
       <div>
-        <label class="block text-sm font-medium text-gray-300 mb-1" for="nomeHaras">Nome do Haras *</label>
+        <label class="block text-sm font-medium text-slate-600 mb-1" for="nomeHaras">Nome do Haras *</label>
         <input id="nomeHaras" type="text" formControlName="nomeHaras" placeholder="Ex: Haras Bela Vista"
-               class="w-full px-4 py-2.5 rounded-lg bg-gray-800 border text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition
-                      {{ isInvalid('nomeHaras') ? 'border-red-500' : 'border-gray-700' }}"/>
-        @if (isInvalid('nomeHaras')) { <p class="mt-1 text-xs text-red-400">{{ form.get('nomeHaras')?.errors?.['serverError'] || 'Nome do haras é obrigatório.' }}</p> }
+               class="w-full px-4 py-2.5 rounded-lg bg-slate-100 border text-slate-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition
+                      {{ isInvalid('nomeHaras') ? 'border-red-500' : 'border-slate-300' }}"/>
+        @if (isInvalid('nomeHaras')) { <p class="mt-1 text-xs text-red-600">{{ form.get('nomeHaras')?.errors?.['serverError'] || 'Nome do haras é obrigatório.' }}</p> }
       </div>
 
       <!-- Data Aquisição -->
       <div>
-        <label class="block text-sm font-medium text-gray-300 mb-1" for="dataAquisicao">Data de aquisição *</label>
+        <label class="block text-sm font-medium text-slate-600 mb-1" for="dataAquisicao">Data de aquisição *</label>
         <input id="dataAquisicao" type="date" formControlName="dataAquisicao"
-               class="w-full px-4 py-2.5 rounded-lg bg-gray-800 border text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition
-                      {{ isInvalid('dataAquisicao') ? 'border-red-500' : 'border-gray-700' }}"/>
-        @if (isInvalid('dataAquisicao')) { <p class="mt-1 text-xs text-red-400">{{ form.get('dataAquisicao')?.errors?.['serverError'] || 'Data de aquisição é obrigatória.' }}</p> }
+               class="w-full px-4 py-2.5 rounded-lg bg-slate-100 border text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition
+                      {{ isInvalid('dataAquisicao') ? 'border-red-500' : 'border-slate-300' }}"/>
+        @if (isInvalid('dataAquisicao')) { <p class="mt-1 text-xs text-red-600">{{ form.get('dataAquisicao')?.errors?.['serverError'] || 'Data de aquisição é obrigatória.' }}</p> }
       </div>
 
       <!-- Valor Compra -->
       <div>
-        <label class="block text-sm font-medium text-gray-300 mb-1" for="valorCompra">Valor de compra (R$) *</label>
+        <label class="block text-sm font-medium text-slate-600 mb-1" for="valorCompra">Valor de compra (R$) *</label>
         <input id="valorCompra" type="number" formControlName="valorCompra" placeholder="0.00" min="0.01" step="0.01"
-               class="w-full px-4 py-2.5 rounded-lg bg-gray-800 border text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition
-                      {{ isInvalid('valorCompra') ? 'border-red-500' : 'border-gray-700' }}"/>
-        @if (isInvalid('valorCompra')) { <p class="mt-1 text-xs text-red-400">{{ form.get('valorCompra')?.errors?.['serverError'] || 'Valor deve ser maior que zero.' }}</p> }
+               class="w-full px-4 py-2.5 rounded-lg bg-slate-100 border text-slate-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition
+                      {{ isInvalid('valorCompra') ? 'border-red-500' : 'border-slate-300' }}"/>
+        @if (isInvalid('valorCompra')) { <p class="mt-1 text-xs text-red-600">{{ form.get('valorCompra')?.errors?.['serverError'] || 'Valor deve ser maior que zero.' }}</p> }
       </div>
 
       <!-- Em Tratamento -->
       <div class="flex items-center gap-3">
         <input id="emTratamento" type="checkbox" formControlName="emTratamento"
-               class="w-4 h-4 rounded border-gray-600 bg-gray-800 text-indigo-500 focus:ring-indigo-500"/>
-        <label class="text-sm text-gray-300" for="emTratamento">Em tratamento (fisioterapia ativa)</label>
+               class="w-4 h-4 rounded border-slate-400 bg-slate-100 text-emerald-500 focus:ring-emerald-500"/>
+        <label class="text-sm text-slate-600" for="emTratamento">Em tratamento (fisioterapia ativa)</label>
       </div>
 
       <!-- Actions -->
       <div class="flex justify-end gap-3 pt-2">
-        <a routerLink="/cavalos" class="px-5 py-2.5 text-sm text-gray-300 border border-gray-700 hover:border-gray-500 rounded-lg transition">Cancelar</a>
+        <a routerLink="/cavalos" class="px-5 py-2.5 text-sm text-slate-600 border border-slate-300 hover:border-slate-400 rounded-lg transition">Cancelar</a>
         <button type="submit" [disabled]="loading()"
-                class="px-5 py-2.5 text-sm bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white font-medium rounded-lg transition">
+                class="px-5 py-2.5 text-sm bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-slate-800 font-medium rounded-lg transition">
           @if (loading()) { Salvando... } @else { Salvar }
         </button>
       </div>

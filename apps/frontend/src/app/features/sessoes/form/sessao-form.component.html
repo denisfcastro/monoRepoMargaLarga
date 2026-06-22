@@ -1,67 +1,67 @@
-<div class="min-h-screen bg-gray-950">
-  <header class="bg-gray-900 border-b border-gray-800 px-6 py-4 flex items-center gap-4">
-    <a routerLink="/sessoes" class="text-gray-400 hover:text-white transition">← Sessões</a>
-    <h1 class="text-white font-bold text-xl">{{ isEditMode() ? 'Editar' : 'Nova' }} Sessão</h1>
+<div class="min-h-screen bg-slate-50">
+  <header class="bg-white border-b border-slate-200 px-6 py-4 flex items-center gap-4">
+    <a routerLink="/sessoes" class="text-slate-500 hover:text-slate-800 transition">← Sessões</a>
+    <h1 class="text-slate-800 font-bold text-xl">{{ isEditMode() ? 'Editar' : 'Nova' }} Sessão</h1>
   </header>
 
   <main class="max-w-2xl mx-auto px-6 py-8">
     @if (apiError()) {
-      <div class="mb-6 p-4 rounded-lg bg-red-900/40 border border-red-700 text-red-300 text-sm">⚠️ {{ apiError() }}</div>
+      <div class="mb-6 p-4 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm">⚠️ {{ apiError() }}</div>
     }
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="bg-gray-900 border border-gray-800 rounded-2xl p-6 space-y-5">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="bg-white border border-slate-200 rounded-2xl p-6 space-y-5">
       <!-- Cavalo -->
       <div>
-        <label class="block text-sm font-medium text-gray-300 mb-1" for="cavaloId">Cavalo *</label>
+        <label class="block text-sm font-medium text-slate-600 mb-1" for="cavaloId">Cavalo *</label>
         <select id="cavaloId" formControlName="cavaloId"
-                class="w-full px-4 py-2.5 rounded-lg bg-gray-800 border text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition
-                       {{ isInvalid('cavaloId') ? 'border-red-500' : 'border-gray-700' }}">
+                class="w-full px-4 py-2.5 rounded-lg bg-slate-100 border text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition
+                       {{ isInvalid('cavaloId') ? 'border-red-500' : 'border-slate-300' }}">
           <option value="">Selecione um cavalo...</option>
           @for (cavalo of cavalos(); track cavalo.id) {
             <option [value]="cavalo.id">{{ cavalo.nome }} — {{ cavalo.nomeHaras }}</option>
           }
         </select>
-        @if (isInvalid('cavaloId')) { <p class="mt-1 text-xs text-red-400">{{ form.get('cavaloId')?.errors?.['serverError'] || 'Selecione um cavalo.' }}</p> }
+        @if (isInvalid('cavaloId')) { <p class="mt-1 text-xs text-red-600">{{ form.get('cavaloId')?.errors?.['serverError'] || 'Selecione um cavalo.' }}</p> }
       </div>
 
       <!-- Data Sessão -->
       <div>
-        <label class="block text-sm font-medium text-gray-300 mb-1" for="dataSessao">Data da sessão *</label>
+        <label class="block text-sm font-medium text-slate-600 mb-1" for="dataSessao">Data da sessão *</label>
         <input id="dataSessao" type="date" formControlName="dataSessao"
-               class="w-full px-4 py-2.5 rounded-lg bg-gray-800 border text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition
-                      {{ isInvalid('dataSessao') ? 'border-red-500' : 'border-gray-700' }}"/>
-        @if (isInvalid('dataSessao')) { <p class="mt-1 text-xs text-red-400">{{ form.get('dataSessao')?.errors?.['serverError'] || 'Data é obrigatória.' }}</p> }
+               class="w-full px-4 py-2.5 rounded-lg bg-slate-100 border text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition
+                      {{ isInvalid('dataSessao') ? 'border-red-500' : 'border-slate-300' }}"/>
+        @if (isInvalid('dataSessao')) { <p class="mt-1 text-xs text-red-600">{{ form.get('dataSessao')?.errors?.['serverError'] || 'Data é obrigatória.' }}</p> }
       </div>
 
       <!-- Duração -->
       <div>
-        <label class="block text-sm font-medium text-gray-300 mb-1" for="duracaoMin">Duração (min) — entre 30 e 90 *</label>
+        <label class="block text-sm font-medium text-slate-600 mb-1" for="duracaoMin">Duração (min) — entre 30 e 90 *</label>
         <input id="duracaoMin" type="number" formControlName="duracaoMin" min="30" max="90"
-               class="w-full px-4 py-2.5 rounded-lg bg-gray-800 border text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition
-                      {{ isInvalid('duracaoMin') ? 'border-red-500' : 'border-gray-700' }}"/>
-        @if (isInvalid('duracaoMin')) { <p class="mt-1 text-xs text-red-400">{{ form.get('duracaoMin')?.errors?.['serverError'] || 'Duração deve ser entre 30 e 90 minutos.' }}</p> }
+               class="w-full px-4 py-2.5 rounded-lg bg-slate-100 border text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition
+                      {{ isInvalid('duracaoMin') ? 'border-red-500' : 'border-slate-300' }}"/>
+        @if (isInvalid('duracaoMin')) { <p class="mt-1 text-xs text-red-600">{{ form.get('duracaoMin')?.errors?.['serverError'] || 'Duração deve ser entre 30 e 90 minutos.' }}</p> }
       </div>
 
       <!-- Foco Lesão -->
       <div>
-        <label class="block text-sm font-medium text-gray-300 mb-1" for="focoLesao">Foco da lesão *</label>
+        <label class="block text-sm font-medium text-slate-600 mb-1" for="focoLesao">Foco da lesão *</label>
         <input id="focoLesao" type="text" formControlName="focoLesao" placeholder="Ex: Tendão flexor"
-               class="w-full px-4 py-2.5 rounded-lg bg-gray-800 border text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition
-                      {{ isInvalid('focoLesao') ? 'border-red-500' : 'border-gray-700' }}"/>
-        @if (isInvalid('focoLesao')) { <p class="mt-1 text-xs text-red-400">{{ form.get('focoLesao')?.errors?.['serverError'] || 'Foco da lesão é obrigatório.' }}</p> }
+               class="w-full px-4 py-2.5 rounded-lg bg-slate-100 border text-slate-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition
+                      {{ isInvalid('focoLesao') ? 'border-red-500' : 'border-slate-300' }}"/>
+        @if (isInvalid('focoLesao')) { <p class="mt-1 text-xs text-red-600">{{ form.get('focoLesao')?.errors?.['serverError'] || 'Foco da lesão é obrigatório.' }}</p> }
       </div>
 
       <!-- Progresso Boa -->
       <div class="flex items-center gap-3">
         <input id="progressoBoa" type="checkbox" formControlName="progressoBoa"
-               class="w-4 h-4 rounded border-gray-600 bg-gray-800 text-emerald-500 focus:ring-emerald-500"/>
-        <label class="text-sm text-gray-300" for="progressoBoa">Progresso satisfatório nesta sessão</label>
+               class="w-4 h-4 rounded border-slate-400 bg-slate-100 text-emerald-500 focus:ring-emerald-500"/>
+        <label class="text-sm text-slate-600" for="progressoBoa">Progresso satisfatório nesta sessão</label>
       </div>
 
       <div class="flex justify-end gap-3 pt-2">
-        <a routerLink="/sessoes" class="px-5 py-2.5 text-sm text-gray-300 border border-gray-700 hover:border-gray-500 rounded-lg transition">Cancelar</a>
+        <a routerLink="/sessoes" class="px-5 py-2.5 text-sm text-slate-600 border border-slate-300 hover:border-slate-400 rounded-lg transition">Cancelar</a>
         <button type="submit" [disabled]="loading()"
-                class="px-5 py-2.5 text-sm bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white font-medium rounded-lg transition">
+                class="px-5 py-2.5 text-sm bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-slate-800 font-medium rounded-lg transition">
           @if (loading()) { Salvando... } @else { Salvar }
         </button>
       </div>

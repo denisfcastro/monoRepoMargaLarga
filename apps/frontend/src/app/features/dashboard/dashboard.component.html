@@ -1,40 +1,40 @@
-<div class="min-h-screen bg-gray-950 flex flex-col md:flex-row">
+<div class="min-h-screen bg-slate-50 flex flex-col md:flex-row">
   <!-- Sidebar -->
-  <aside class="w-full md:w-64 bg-gray-900 border-r border-gray-800 flex flex-col shrink-0">
-    <div class="p-6 border-b border-gray-800 flex items-center gap-3">
+  <aside class="w-full md:w-64 bg-white border-r border-slate-200 flex flex-col shrink-0">
+    <div class="p-6 border-b border-slate-200 flex items-center gap-3">
       <span class="text-2xl">🐴</span>
       <div>
-        <h1 class="text-white font-bold text-lg leading-tight">Manga Larga</h1>
-        <p class="text-gray-400 text-xs">Clínica Equina</p>
+        <h1 class="text-slate-800 font-bold text-lg leading-tight">Manga Larga</h1>
+        <p class="text-slate-500 text-xs">Clínica Equina</p>
       </div>
     </div>
     
     <nav class="flex-1 p-4 space-y-2">
       <a routerLink="/cavalos"
-         class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-indigo-600/20 hover:border hover:border-indigo-500/50 transition-all border border-transparent">
+         class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:text-slate-800 hover:bg-emerald-600/20 hover:border hover:border-emerald-500/50 transition-all border border-transparent">
         <span class="text-xl">🐎</span>
         <span class="font-medium">Cavalos</span>
       </a>
       
       <a routerLink="/sessoes"
-         class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-emerald-600/20 hover:border hover:border-emerald-500/50 transition-all border border-transparent">
+         class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:text-slate-800 hover:bg-emerald-600/20 hover:border hover:border-emerald-500/50 transition-all border border-transparent">
         <span class="text-xl">🩺</span>
         <span class="font-medium">Sessões Fisio</span>
       </a>
       
       @if (isAdmin()) {
         <a routerLink="/admin/users"
-           class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-amber-600/20 hover:border hover:border-amber-500/50 transition-all border border-transparent">
+           class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:text-slate-800 hover:bg-amber-600/20 hover:border hover:border-amber-500/50 transition-all border border-transparent">
           <span class="text-xl">👥</span>
           <span class="font-medium">Usuários</span>
         </a>
       }
     </nav>
 
-    <div class="p-4 border-t border-gray-800">
+    <div class="p-4 border-t border-slate-200">
       <button
         (click)="logout()"
-        class="w-full flex items-center justify-center gap-2 px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-gray-800 border border-gray-700 hover:border-gray-500 rounded-xl transition-all"
+        class="w-full flex items-center justify-center gap-2 px-4 py-2 text-sm text-slate-500 hover:text-slate-800 hover:bg-slate-100 border border-slate-300 hover:border-slate-400 rounded-xl transition-all"
       >
         <span>Sair do sistema</span>
       </button>
@@ -44,26 +44,26 @@
   <!-- Main Content -->
   <div class="flex-1 flex flex-col overflow-hidden">
     <!-- Header -->
-    <header class="bg-gray-900 md:bg-transparent border-b border-gray-800 md:border-none px-8 py-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
-      <h2 class="text-2xl font-bold text-white">Dashboard</h2>
-      <div class="text-gray-300 text-sm bg-gray-900 md:bg-gray-900/50 px-4 py-2 rounded-full border border-gray-800 inline-flex items-center">
-        Olá, <span class="font-semibold text-indigo-400 ml-1">{{ userName() }}</span>
-        @if (isAdmin()) { <span class="ml-3 px-2 py-0.5 rounded-full bg-amber-900/50 text-amber-300 text-xs border border-amber-500/30">Admin</span> }
+    <header class="bg-white md:bg-transparent border-b border-slate-200 md:border-none px-8 py-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+      <h2 class="text-2xl font-bold text-slate-800">Dashboard</h2>
+      <div class="text-slate-600 text-sm bg-white md:bg-white/50 px-4 py-2 rounded-full border border-slate-200 inline-flex items-center">
+        Olá, <span class="font-semibold text-emerald-600 ml-1">{{ userName() }}</span>
+        @if (isAdmin()) { <span class="ml-3 px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 text-xs border border-amber-200">Admin</span> }
       </div>
     </header>
 
     <!-- Content Area -->
     <main class="flex-1 overflow-y-auto px-8 py-2">
-      <div class="bg-gray-900 border border-gray-800 shadow-xl shadow-black/50 rounded-2xl p-6 md:p-8">
+      <div class="bg-white border border-slate-200 shadow-md border border-slate-200 rounded-2xl p-6 md:p-8">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
-            <h3 class="text-xl font-bold text-white flex items-center gap-2">
+            <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2">
               <span class="text-red-500 animate-pulse text-2xl">❤️‍🩹</span>
               Em Tratamento Ativo
             </h3>
-            <p class="text-gray-400 text-sm mt-1">Acompanhamento dos cavalos que estão recebendo cuidados</p>
+            <p class="text-slate-500 text-sm mt-1">Acompanhamento dos cavalos que estão recebendo cuidados</p>
           </div>
-          <div class="bg-indigo-950 text-indigo-300 font-bold px-4 py-2 rounded-xl border border-indigo-500/30 flex items-center gap-2 shadow-inner">
+          <div class="bg-emerald-50 text-emerald-700 font-bold px-4 py-2 rounded-xl border border-emerald-200 flex items-center gap-2 shadow-inner">
             <span class="text-lg">{{ cavalosEmTratamento().length }}</span>
             <span class="text-sm font-medium">ativos</span>
           </div>
@@ -71,35 +71,35 @@
 
         @if (loading()) {
           <div class="flex flex-col items-center justify-center py-16">
-            <div class="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-indigo-500 mb-4"></div>
-            <p class="text-gray-400 animate-pulse">Carregando pacientes...</p>
+            <div class="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-emerald-500 mb-4"></div>
+            <p class="text-slate-500 animate-pulse">Carregando pacientes...</p>
           </div>
         } @else if (error()) {
-          <div class="bg-red-950/50 border border-red-500/50 text-red-400 p-6 rounded-xl flex items-center gap-3">
+          <div class="bg-red-50 border border-red-200 text-red-600 p-6 rounded-xl flex items-center gap-3">
             <span class="text-2xl">⚠️</span>
             <p>{{ error() }}</p>
           </div>
         } @else if (cavalosEmTratamento().length === 0) {
-          <div class="flex flex-col items-center justify-center py-16 px-4 bg-gray-950/50 rounded-2xl border border-dashed border-gray-800">
+          <div class="flex flex-col items-center justify-center py-16 px-4 bg-slate-50/50 rounded-2xl border border-dashed border-slate-200">
             <span class="text-5xl mb-4 opacity-50">🐴</span>
-            <h4 class="text-white font-medium text-lg mb-1">Nenhum cavalo em tratamento</h4>
-            <p class="text-gray-500 text-center max-w-sm">No momento, todos os cavalos registrados estão com status de tratamento inativo.</p>
+            <h4 class="text-slate-800 font-medium text-lg mb-1">Nenhum cavalo em tratamento</h4>
+            <p class="text-slate-400 text-center max-w-sm">No momento, todos os cavalos registrados estão com status de tratamento inativo.</p>
           </div>
         } @else {
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
             @for (cavalo of cavalosEmTratamento(); track cavalo.id) {
               <a [routerLink]="['/cavalos/editar', cavalo.id]"
-                 class="group bg-gray-950 border border-gray-800 hover:border-indigo-500/50 hover:bg-gray-900 rounded-xl p-5 transition-all duration-200 flex items-center gap-5 cursor-pointer">
-                <div class="h-14 w-14 bg-gray-900 border border-gray-800 group-hover:border-indigo-500/30 group-hover:scale-105 rounded-full flex items-center justify-center text-2xl transition-all shadow-inner">
+                 class="group bg-slate-50 border border-slate-200 hover:border-emerald-500/50 hover:bg-white rounded-xl p-5 transition-all duration-200 flex items-center gap-5 cursor-pointer">
+                <div class="h-14 w-14 bg-white border border-slate-200 group-hover:border-emerald-200 group-hover:scale-105 rounded-full flex items-center justify-center text-2xl transition-all shadow-inner">
                   🐎
                 </div>
                 <div class="flex-1 min-w-0">
-                  <h4 class="text-white font-semibold text-lg truncate group-hover:text-indigo-300 transition-colors">{{ cavalo.nome }}</h4>
-                  <p class="text-gray-400 text-sm flex items-center gap-1.5 truncate mt-0.5">
+                  <h4 class="text-slate-800 font-semibold text-lg truncate group-hover:text-emerald-700 transition-colors">{{ cavalo.nome }}</h4>
+                  <p class="text-slate-500 text-sm flex items-center gap-1.5 truncate mt-0.5">
                     <span class="opacity-70">🏠</span> {{ cavalo.nomeHaras }}
                   </p>
                 </div>
-                <div class="h-10 w-10 bg-gray-900 group-hover:bg-indigo-600 text-gray-500 group-hover:text-white rounded-xl flex items-center justify-center transition-all border border-gray-800 group-hover:border-indigo-500 group-hover:shadow-[0_0_15px_rgba(79,70,229,0.4)]">
+                <div class="h-10 w-10 bg-white group-hover:bg-emerald-600 text-slate-400 group-hover:text-slate-800 rounded-xl flex items-center justify-center transition-all border border-slate-200 group-hover:border-emerald-500 group-hover:shadow-sm">
                   <span>➡️</span>
                 </div>
               </a>

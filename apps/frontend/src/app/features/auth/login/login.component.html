@@ -1,18 +1,18 @@
-<section class="min-h-screen flex items-center justify-center bg-gray-950 px-4">
+<section class="min-h-screen flex items-center justify-center bg-slate-50 px-4">
   <div class="w-full max-w-md">
     <!-- Logo / Brand -->
     <div class="text-center mb-8">
-      <h1 class="text-4xl font-bold text-indigo-400 tracking-tight">🐴 Manga Larga</h1>
-      <p class="text-gray-400 mt-2 text-sm">Clínica Equina — Acesse sua conta</p>
+      <h1 class="text-4xl font-bold text-emerald-600 tracking-tight">🐴 Manga Larga</h1>
+      <p class="text-slate-500 mt-2 text-sm">Clínica Equina — Acesse sua conta</p>
     </div>
 
     <!-- Card -->
-    <div class="bg-gray-900 border border-gray-800 rounded-2xl shadow-2xl p-8">
-      <h2 class="text-2xl font-semibold text-white mb-6">Entrar</h2>
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-2xl p-8">
+      <h2 class="text-2xl font-semibold text-slate-800 mb-6">Entrar</h2>
 
       <!-- Error Alert -->
       @if (errorMessage()) {
-        <div class="mb-4 p-3 rounded-lg bg-red-900/40 border border-red-700 text-red-300 text-sm flex items-start gap-2">
+        <div class="mb-4 p-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm flex items-start gap-2">
           <span>⚠️</span>
           <span>{{ errorMessage() }}</span>
         </div>
@@ -21,33 +21,33 @@
       <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-5">
         <!-- Email -->
         <div>
-          <label class="block text-sm font-medium text-gray-300 mb-1" for="email">E-mail</label>
+          <label class="block text-sm font-medium text-slate-600 mb-1" for="email">E-mail</label>
           <input
             id="email"
             type="email"
             formControlName="email"
             placeholder="seu@email.com"
-            class="w-full px-4 py-2.5 rounded-lg bg-gray-800 border text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition
-                   {{ form.get('email')?.invalid && form.get('email')?.touched ? 'border-red-500' : 'border-gray-700' }}"
+            class="w-full px-4 py-2.5 rounded-lg bg-slate-100 border text-slate-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition
+                   {{ form.get('email')?.invalid && form.get('email')?.touched ? 'border-red-500' : 'border-slate-300' }}"
           />
           @if (form.get('email')?.invalid && form.get('email')?.touched) {
-            <p class="mt-1 text-xs text-red-400">Informe um e-mail válido.</p>
+            <p class="mt-1 text-xs text-red-600">Informe um e-mail válido.</p>
           }
         </div>
 
         <!-- Senha -->
         <div>
-          <label class="block text-sm font-medium text-gray-300 mb-1" for="senha">Senha</label>
+          <label class="block text-sm font-medium text-slate-600 mb-1" for="senha">Senha</label>
           <input
             id="senha"
             type="password"
             formControlName="senha"
             placeholder="••••••••"
-            class="w-full px-4 py-2.5 rounded-lg bg-gray-800 border text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition
-                   {{ form.get('senha')?.invalid && form.get('senha')?.touched ? 'border-red-500' : 'border-gray-700' }}"
+            class="w-full px-4 py-2.5 rounded-lg bg-slate-100 border text-slate-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition
+                   {{ form.get('senha')?.invalid && form.get('senha')?.touched ? 'border-red-500' : 'border-slate-300' }}"
           />
           @if (form.get('senha')?.invalid && form.get('senha')?.touched) {
-            <p class="mt-1 text-xs text-red-400">A senha é obrigatória.</p>
+            <p class="mt-1 text-xs text-red-600">A senha é obrigatória.</p>
           }
         </div>
 
@@ -55,7 +55,7 @@
         <button
           type="submit"
           [disabled]="loading()"
-          class="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
+          class="w-full py-3 px-4 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed text-slate-800 font-semibold rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
         >
           @if (loading()) {
             <svg class="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
@@ -70,9 +70,9 @@
       </form>
 
       <!-- Links -->
-      <div class="mt-6 text-center text-sm text-gray-400 space-y-2 flex flex-col">
-        <p>Não tem conta? <a routerLink="/register" class="text-indigo-400 hover:text-indigo-300 font-medium">Cadastre-se</a></p>
-        <a href="#" class="text-indigo-400 hover:text-indigo-300 font-medium transition">Esqueceu sua senha?</a>
+      <div class="mt-6 text-center text-sm text-slate-500 space-y-2 flex flex-col">
+        <p>Não tem conta? <a routerLink="/register" class="text-emerald-600 hover:text-emerald-700 font-medium">Cadastre-se</a></p>
+        <a href="#" class="text-emerald-600 hover:text-emerald-700 font-medium transition">Esqueceu sua senha?</a>
       </div>
     </div>
   </div>
